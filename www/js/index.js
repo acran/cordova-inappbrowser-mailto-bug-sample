@@ -26,4 +26,11 @@ function onDeviceReady() {
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
+
+    document.querySelectorAll('a.inappbrowser').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            cordova.InAppBrowser.open(link.href, link.target);
+        });
+    });
 }
